@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package godrone;
+
+// The greeting service definition.
+service CacheOps {
+  // Sends a greeting
+  rpc Put (PutRequest) returns (PutResponse) {}
+
+  //rpc GetOne (GetRequest) returns (GetResponse) {}
+}
+
+
+message PutRequest {
+  string keySapce = 1;
+
+  string key = 2;
+
+  string value = 3;
+}
+
+
+message PutResponse {
+  string key = 1;
+
+  bool success = 2;
+}
