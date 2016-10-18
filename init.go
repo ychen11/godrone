@@ -5,6 +5,7 @@ import (
 )
 
 var foo int = 32
+var cache map[string]string
 
 func startClient() {
 	foo++
@@ -13,6 +14,11 @@ func startClient() {
 }
 
 func startCache () {
-	foo += 2
+	cache = make(map[string]string)
 	fmt.Println(foo)
+}
+
+func putData (key string, value string) {
+	cache[key] = value
+	fmt.Printf(cache[key])
 }
