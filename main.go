@@ -14,27 +14,21 @@ const (
 	port = ":40001"
 )
 
-
-func start () {
-	startClient()
-}
-
-
-func startLocalCache () {
-	startCache()
-}
+// func startLocalCache () {
+// 	startCache()
+// }
 
 type server struct{}
 
 // SayHello implements helloworld.GreeterServer
 func (s *server) Put(ctx context.Context, in *pb.PutRequest) (*pb.PutResponse, error) {
-	putData(in.Key, in.Value)
+	cachePutOne (in.Key, in.Value)
 	return &pb.PutResponse{Key: in.Key, Success: true}, nil
 }
 
 func main() {
-	start()
-	startLocalCache()
+	//start()
+	initCache()
 	lis, err := net.Listen("tcp", port)
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)
