@@ -33,5 +33,5 @@ func cacheGetOne (key string) (string, bool) {
     return "", false
   } else {
     return value, true
-  } 
+  }
 }

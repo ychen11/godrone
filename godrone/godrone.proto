@@ -4,15 +4,21 @@ package godrone;
 
 // The greeting service definition.
 service CacheOps {
-  // Sends a greeting
+  // Put one kv to cache
   rpc Put (PutRequest) returns (PutResponse) {}
 
-  //rpc GetOne (GetRequest) returns (GetResponse) {}
+  // Get one kv from cache
+  rpc GetOne (GetRequest) returns (GetResponse) {}
 }
+
+//message ResponseHeader {
+//  int64 time = 1;
+//  int64 duration = 2; 
+//}
 
 
 message PutRequest {
-  string keySapce = 1;
+  string keyspace = 1;
 
   string key = 2;
 
@@ -21,7 +27,21 @@ message PutRequest {
 
 
 message PutResponse {
+  
   string key = 1;
 
   bool success = 2;
+}
+
+
+message GetRequest {
+  string keyspace = 1;
+
+  string key = 2;
+}
+
+message GetResponse {
+  string key = 1;
+
+  string value = 2;
 }
